@@ -1,0 +1,45 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: ReplicateImageDemo(),
+    );
+  }
+}
+
+class ReplicateImageDemo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Replicate Image Demo'),
+      ),
+      body: Center(
+        child: ReplicatedImage(imagePath: 'assets/f1.image.png.png', count: 1),
+      ),
+    );
+  }
+}
+
+class ReplicatedImage extends StatelessWidget {
+  final String imagePath;
+  final int count;
+
+  ReplicatedImage({required this.imagePath, required this.count});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: count,
+      itemBuilder: (context, index) {
+        return Image.asset(imagePath);
+      },
+    );
+  }
+}
